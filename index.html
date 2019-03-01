@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h5>您的账户余额是<span id="amount">&&&amount&&&</span></h5>
+
+  <form action="/pay" method="POST">
+    <input type="submit" value="付款">输入金额
+  </form>
+  <button id="button">点我</button>
+  <script>
+    button.addEventListener('click',()=>{
+      let script = document.createElement('script')
+      let functionName = 'frank' + parseInt(Math.random()*100000, 10)
+      window[functionName] = function(){
+        amount.innerText = amount.innerText - 0 - 1
+      }
+      script.src = '/pay?callback=' + functionName
+      document.body.appendChild(script)
+
+      script.onload = function (e) {
+        e.currentTarget.remove()
+        delete window[funcitonName]
+        
+      }
+      script.onerror = function (e) {
+        e.currentTarget.remove()
+        delete window[funcitonName]
+      }
+
+
+
+      // let image = document.createElement('img')
+      // image.src = '/pay'
+      // image.onload = function () {
+      //   alert('打钱成功')
+      //   amount.innerText = amount.innerText - 1
+      // }
+      // image.onerror = function () {
+      //   alert('打钱失败')
+      // }
+    })
+  </script>
+</body>
+</html>
